@@ -1,0 +1,9 @@
+/.idea/
+/bin/
+/build/
+/var/
+/vendor/
+/tmp/
+.env
+/logs/
+/binary/
