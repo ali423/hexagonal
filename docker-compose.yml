@@ -1,5 +1,20 @@
 version: '3'
 services:
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${APP_PORT}:${APP_PORT}"
+    volumes:
+      - .:/shortener
+    depends_on:
+      - mysql
+    env_file:
+      - .env
+    networks:
+      - app_network
   mysql:
     image: mysql:latest
     container_name: my_mysql_container
@@ -11,8 +26,15 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
     ports:
-      - "${DB_PORT}:3306"
+      - "${DB_EXPORT_PORT}:${DB_PORT}"
     env_file:
       - .env
+    networks:
+      - app_network
+
 volumes:
   mysql_data:
+
+networks:
+  app_network:
+    driver: bridge
