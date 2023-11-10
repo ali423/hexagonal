@@ -12,6 +12,9 @@ RUN go mod tidy
 
 COPY . .
 
+# Copy the .env file
+COPY .env .env
+
 RUN go build -o shotener cmd/shotener/main.go
 
-CMD ["./shotener"]
+CMD ["sh", "-c", "sleep 3 && ./shotener"]
