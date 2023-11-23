@@ -26,8 +26,8 @@ docker-compose up
 ### Using Go Command:
 
 ```bash
-cp .env.example .env2
+cp .env.example .env
 
-go run cmd/shortener/*.go
+go run cmd/shotener/*.go
 ```
 
