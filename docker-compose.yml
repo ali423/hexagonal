@@ -6,29 +6,29 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "${APP_PORT}:${APP_PORT}"
+      - "${APP_PORT-8023}:${APP_PORT-8023}"
     volumes:
       - .:/shortener
     depends_on:
       - mysql
     env_file:
-      - .env
+      - .env.docker
     networks:
       - app_network
   mysql:
     image: mysql:latest
     container_name: my_mysql_container
     environment:
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-      MYSQL_DATABASE: ${DB_NAME}
-      MYSQL_USER: ${DB_USERNAME}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD-root}
+      MYSQL_DATABASE: ${DB_NAME-test}
+      MYSQL_USER: ${DB_USERNAME-test}
+      MYSQL_PASSWORD: ${DB_PASSWORD-test}
     volumes:
       - mysql_data:/var/lib/mysql
     ports:
-      - "${DB_EXPORT_PORT}:${DB_PORT}"
+      - "${DB_EXPORT_PORT-3307}:${DB_PORT-3306}"
     env_file:
-      - .env
+      - .env.docker
     networks:
       - app_network
 
