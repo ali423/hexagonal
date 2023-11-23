@@ -12,8 +12,8 @@ RUN go mod tidy
 
 COPY . .
 
-# Copy the .env file
-COPY .env .env
+# Copy the .env.docker file
+COPY .env.docker .env
 
 RUN go build -o shotener cmd/shotener/main.go
 
