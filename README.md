@@ -10,6 +10,14 @@ Hexagonal is a simple URL shortener project designed to demonstrate the Hexagona
 - Hexagonal Architecture: Demonstrates a modular and scalable architecture.
 - Database Flexibility: Connect to multiple SQL databases seamlessly.
 
+## Tests
+
+This project includes tests. To run tests, use the below command : 
+
+```bash
+go test -v -cover ./...
+```
+
 ## Prerequisites
 
 - [Go](https://golang.org/) installed
